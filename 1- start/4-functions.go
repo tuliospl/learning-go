@@ -2,64 +2,6 @@ package main
 
 import "fmt"
 
-func main() {
-	checkIsZero(0)
-	checkIsZero(1)
-	fmt.Println()
-
-	subtraction, multiplication := calculate(5, 10)
-	fmt.Printf("Subtraction: %d, Multiplication: %d\n", subtraction, multiplication)
-	fmt.Println()
-
-	result1, err := division(10, 2)
-	if err != nil {
-		fmt.Println("Error:", err)
-	} else {
-		fmt.Printf("Division Result: %d\n", result1)
-	}
-	result2, err := division(10, 0)
-	if err != nil {
-		fmt.Println("Error:", err)
-	} else {
-		fmt.Printf("Division Result: %d\n", result2)
-	}
-	fmt.Println()
-
-	total := sum(1, 2, 3, 4, 5)
-	fmt.Printf("Total Sum: %d\n", total)
-	fmt.Println()
-
-	greeting()
-	fmt.Println()
-
-	multiply := func(x, y int) int {
-		return x * y
-	}
-	fmt.Printf("Total Multiply: %d\n\n", applyOperation(5, 3, multiply))
-	fmt.Println()
-
-	decrement := countdown(5)
-	fmt.Println("Countdown:", decrement())
-	fmt.Println("Countdown:", decrement())
-	fmt.Println("Countdown:", decrement())
-	fmt.Println("Countdown:", decrement())
-	fmt.Println("Countdown:", decrement())
-	fmt.Println()
-
-	deferExample()
-	fmt.Println()
-
-	fmt.Printf("Factorial of 5: %d\n", factorial(5))
-	fmt.Println()
-
-	recoverExample()
-	fmt.Println()
-
-	calc := &Calculator{value: 10}
-	calc.Add(5)
-	fmt.Printf("Calculator value: %d\n", calc.GetValue())
-}
-
 // Functions can return a value
 func checkIsZero(param int) {
 	fmt.Println(param > 0)
@@ -156,4 +98,62 @@ func (c *Calculator) Add(n int) {
 
 func (c Calculator) GetValue() int {
 	return c.value
+}
+
+func main() {
+	checkIsZero(0)
+	checkIsZero(1)
+	fmt.Println()
+
+	subtraction, multiplication := calculate(5, 10)
+	fmt.Printf("Subtraction: %d, Multiplication: %d\n", subtraction, multiplication)
+	fmt.Println()
+
+	result1, err := division(10, 2)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Printf("Division Result: %d\n", result1)
+	}
+	result2, err := division(10, 0)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Printf("Division Result: %d\n", result2)
+	}
+	fmt.Println()
+
+	total := sum(1, 2, 3, 4, 5)
+	fmt.Printf("Total Sum: %d\n", total)
+	fmt.Println()
+
+	greeting()
+	fmt.Println()
+
+	multiply := func(x, y int) int {
+		return x * y
+	}
+	fmt.Printf("Total Multiply: %d\n\n", applyOperation(5, 3, multiply))
+	fmt.Println()
+
+	decrement := countdown(5)
+	fmt.Println("Countdown:", decrement())
+	fmt.Println("Countdown:", decrement())
+	fmt.Println("Countdown:", decrement())
+	fmt.Println("Countdown:", decrement())
+	fmt.Println("Countdown:", decrement())
+	fmt.Println()
+
+	deferExample()
+	fmt.Println()
+
+	fmt.Printf("Factorial of 5: %d\n", factorial(5))
+	fmt.Println()
+
+	recoverExample()
+	fmt.Println()
+
+	calc := &Calculator{value: 10}
+	calc.Add(5)
+	fmt.Printf("Calculator value: %d\n", calc.GetValue())
 }
