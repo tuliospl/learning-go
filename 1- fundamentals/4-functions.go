@@ -56,7 +56,7 @@ func countdown(n int) func() int {
 			return counter
 		}
 		fmt.Println("Blast off!")
-		return 0
+		return -1
 	}
 }
 
