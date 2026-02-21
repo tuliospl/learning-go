@@ -47,6 +47,17 @@ func main() {
 	fmt.Println()
 
 	deferExample()
+	fmt.Println()
+
+	fmt.Printf("Factorial of 5: %d\n", factorial(5))
+	fmt.Println()
+
+	recoverExample()
+	fmt.Println()
+
+	calc := &Calculator{value: 10}
+	calc.Add(5)
+	fmt.Printf("Calculator value: %d\n", calc.GetValue())
 }
 
 // Functions can return a value
@@ -111,4 +122,38 @@ func countdown(n int) func() int {
 func deferExample() {
 	defer fmt.Println("This will be printed last because it's deferred")
 	fmt.Println("This will be printed first")
+}
+
+// Recursive functions call themselves until a base case is reached.
+func factorial(n int) int {
+	if n <= 1 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+
+// The recover function can be used to handle panics and prevent the program from crashing.
+func recoverExample() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from panic:", r)
+		}
+	}()
+
+	fmt.Println("This will be printed first")
+	panic("Something went wrong!")
+	fmt.Println("This will not be printed because of the panic")
+}
+
+// Calculator Methods are functions that are associated with a type. They can be defined on structs and can have a receiver.
+type Calculator struct {
+	value int
+}
+
+func (c *Calculator) Add(n int) {
+	c.value += n
+}
+
+func (c Calculator) GetValue() int {
+	return c.value
 }
